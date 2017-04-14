@@ -1,5 +1,6 @@
 <?php
 
+$access_token = "EAAYT0dQvVnEBANI9rbYmSm13gl2gT6dMJ47zZAb1j38Sw2EIgBkPxDqIwvjYwgZBC4DyHCnBhaNBJ7YouEh7meJHwWZCBUy9W4H9C2GQj3RTN3qJJ9H141uS4ZBmIQMyCXkc4BuQ1teK6VCd9JLSWGZBUQ9FclUZBXAp3Gs8I0FQZDZD";
 if(isset($_REQUEST['hub_challenge']))
 {
 
@@ -13,6 +14,18 @@ if($token == "hbchawla_token")
 echo $challenge;
 }
 
-echo "hello hbchawla";
+$input = json_decode(file_get_contents('php://input'),true);
+
+$userID = $input['entry'][0]['messaging'][0]['sender']['id'];
+
+$message =  $input['entry'][0]['messaging'][0]['message']['text'];
+
+echo "$userID and $message";
+
+$url = "https://graph.facebook.com/v2.6/me/messages?access_token=$access_token";
+
+$ch = curl_init($url);
+
+echo $ch;
 
 ?>
