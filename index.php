@@ -48,6 +48,10 @@ switch ($message) {
     case (preg_match('/(love|Love)/',$message) ? true :false ):
       $reply = "I love you too";
       break;
+    case (preg_match('/(send|tell|text)(.*?)joke)/',$message) ? true :false ):
+      $res = json_decode(file_get_contents('http://api.yomomma.info/'),true);
+      $reply = $res['joke'];
+      break;
     default:
       $reply = "Sorry, I don't understand... Wants to laugh, tell me 'send or text me a joke'";
       break;
