@@ -1,6 +1,6 @@
 <?php
 
-$access_token = "EAAYT0dQvVnEBANI9rbYmSm13gl2gT6dMJ47zZAb1j38Sw2EIgBkPxDqIwvjYwgZBC4DyHCnBhaNBJ7YouEh7meJHwWZCBUy9W4H9C2GQj3RTN3qJJ9H141uS4ZBmIQMyCXkc4BuQ1teK6VCd9JLSWGZBUQ9FclUZBXAp3Gs8I0FQZDZD";
+$access_token = "EAAYT0dQvVnEBAPwtcWZCkzaniwy0R99sfJw4r94SPxoBdT3TXWUbXoZAGQVo9BrMSFi3CemNQbLMqopHwdkjZBDzPiyvAYmVCcvU0TZBAcPksd03shNfJrw47WZAkYsYviCky60KWQYdq3H9KNUcFSIcyYt862uxi4IircimBmwZDZD";
 if(isset($_REQUEST['hub_challenge']))
 {
 
@@ -20,12 +20,35 @@ $userID = $input['entry'][0]['messaging'][0]['sender']['id'];
 
 $message =  $input['entry'][0]['messaging'][0]['message']['text'];
 
-echo "$userID and $message";
+$reply = "I don't understand. Ask me to 'tell a joke'";
+
+if(preg_match('/(send|tell|text)(.*?)joke/',$message)){
+  $res = json_decode(file_get_contents('http://api.yomomma.info/'),true);
+  $reply = $res['joke'];
+}
+
 
 $url = "https://graph.facebook.com/v2.6/me/messages?access_token=$access_token";
 
+
+$jsonData = "{
+  'recipient' :{
+  'id' : $userID
+  },
+  'message':{
+  'text': '".addslashes($reply)."'
+  }
+}";
 $ch = curl_init($url);
 
-echo $ch;
+curl_setopt($ch,CURLOPT_POST,true);
 
+curl_setopt($ch,CURLOPT_POSTFIELDS,$jsonData);
+curl_setopt($ch,CURLOPT_HTTPHEADER,['Content-Type:application/json']);
+
+if(!empty($input['entry'][0]['messaging'][0]['message']))
+{
+curl_exec($ch);
+echo $reply;
+}
 ?>
