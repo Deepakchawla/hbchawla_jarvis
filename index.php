@@ -13,6 +13,6 @@ if($token == "hbchawla_token")
 echo $challenge;
 }
 
-echo "hello hbchawla";
+echo "hello hbchawl";
 
 ?>
