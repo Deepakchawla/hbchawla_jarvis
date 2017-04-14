@@ -39,14 +39,14 @@ switch ($message) {
     case (preg_match('/(Who are you|What is your name|who are you|what is your name)/',$message) ? true :false ):
       $reply = "My name is HBChawla Jarvis and I am an AI based personal home assistant..";
       break;
-    case (preg_match('/(Who develop you|who develop you/',$message) ? true :false ):
+    case (preg_match('/(Who develop you|who develop you)/',$message) ? true :false ):
       $reply = "Mr. Deepak Chawla. He is a MLVTEC Final Year Engineering Student";
       break;
-    case (preg_match('/(like|Like/',$message) ? true :false ):
-      $reply = "I like too";
+    case (preg_match('/(like|Like)/',$message) ? true :false ):
+      $reply = "I like you too";
       break;
-    case (preg_match('/(love|Love/',$message) ? true :false ):
-      $reply = "I love too";
+    case (preg_match('/(love|Love)/',$message) ? true :false ):
+      $reply = "I love you too";
       break;
     default:
       $reply = "Sorry, I don't understand.";
