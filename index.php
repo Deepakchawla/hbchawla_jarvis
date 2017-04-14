@@ -33,7 +33,7 @@ switch ($message) {
     case (preg_match('/(How are you|how are you)/',$message) ? true :false ):
       $reply = "I am fit as fiddle.... How are you...??";
       break;
-    case (preg_match('/(I am fine|I am good|i am fine|i am good)/',$message) ? true :false ):
+    case (preg_match('/(fine|good|fine|good)/',$message) ? true :false ):
       $reply = "It is very good";
       break;
     case (preg_match('/(Who are you|What is your name|who are you|what is your name)/',$message) ? true :false ):
