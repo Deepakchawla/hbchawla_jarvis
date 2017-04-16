@@ -59,7 +59,7 @@ def TakeSnapshotAndSave():
 	if a == 0:
 		print "it is empty"
 	else:
-	    cv2.imwrite('try.jpg',frame)
+		print "it is not empty"
 
         # press the letter "q" to save the picture
 	#if result == range(2,3):
@@ -69,7 +69,7 @@ def TakeSnapshotAndSave():
        # if cv2.waitKey(1) & 0xFF == ord('q'):
 	#    cv2.imwrite('try.jpg',frame)
             # write the captured image with this name
-            break
+            
 
     # When everything done, release the capture
     cap.release()

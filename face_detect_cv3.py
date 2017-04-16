@@ -7,7 +7,7 @@ from PIL import Image
 
 
 # Get user supplied values
-imagePath = "deepakchawla.jpg"
+imagePath = "abba.jpg"
 cascPath = "haarcascade_frontalface.xml"
 print imagePath
 # Create the haar cascade
@@ -24,17 +24,16 @@ faces = faceCascade.detectMultiScale(
     scaleFactor=1.1,
     minNeighbors=5,
     minSize=(30, 30)
-    #flags = cv2.CV_HAAR_SCALE_IMAGE
+#    flags = cv2.CV_HAAR_SCALE_IMAGE
 )
-#print (faces)
-#print("Found {0} faces!".format(len(faces)))
-
+print (faces)
+print("Found {0} faces!".format(len(faces)))
 # Draw a rectangle around the faces
 for (x, y, w, h) in faces:
    cv2.rectangle(image, (x, y), (x+w, y+h), (0, 255, 0), 2)
 
-#cv2.imshow("Faces found", image)
+cv2.imshow("Faces found", image)
+
 cv2.imwrite('uploads_images/result.jpg', image)
 
-print("done", img)
-#cv2.waitKey(0)
+cv2.waitKey(0)

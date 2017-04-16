@@ -1,3 +1,9 @@
 <?php
-echo exec("python camera_object_distance.py");
+//echo exec("python face_detect.py");
+
+function foo($username)
+{
+  echo $username;
+}
+
 ?>
