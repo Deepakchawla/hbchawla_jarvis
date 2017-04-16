@@ -39,7 +39,7 @@ def image_detection():
     else:
         print("it is not empty")
         cv2.imwrite('image_detect.jpg',image)
-        os.system("php -r 'include \"test.php\";foo(\"image_detect.jpg\");'")
+        os.system("php -r 'include \"index.php\";foo(\"image_detect.jpg\");'")
 
 
     # Draw a rectangle around the faces
